@@ -5,16 +5,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Laravel\Prompts\Table;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller {
     public function index() {
-        $tasks = Task::all();
-        return view('tasks.index', compact('tasks'));
+        $tasks = DB::Table('Tasks AS t')
+            ->select('t.*', 'c.name AS category_name')
+            ->leftJoin('categories AS c','c.id','=','t.category_id')
+            ->orderBy('t.id','desc')
+            ->get();
+
+        $categories = $this->category();
+        return view('tasks.todolist', compact('tasks', 'categories'));
+    }
+
+    public function category() {
+        $categories = DB::Table('categories')->orderBy('id', 'asc')->get();
+        return $categories;
     }
 
     public function store(Request $request) {
-        $request->validate(['title' => 'required']);
-        Task::create(['title' => $request->title]);
+        //print_r($request->all());
+        $request->validate([
+            'title' => 'required',
+            'category' => 'required',
+        ]);
+        Task::create([
+            'title' => $request->title,
+            'category_id' => $request->category
+        ]);
         return redirect()->route('tasks.index');
     }
 

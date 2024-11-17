@@ -1,0 +1,40 @@
+:root {
+    --blue-color: #133E87;
+    --white-color: #ffffff;
+    --grey-color: #000000DF;
+}
+
+.category-list {
+    list-style-type: none;
+    background-color: var(--blue-color);
+    color: var(--white-color);
+    padding: 1rem;
+    margin: .5rem;
+    border-radius: .5rem;
+    width: 100%;
+}
+
+.category-list:hover {
+    list-style-type: none;
+    background-color: var(--grey-color);
+    color: var(--white-color);
+}
+
+.list-group-category {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.list-group-item:hover {
+    background-color: lightgray;
+}
+
+.btn-info {
+    color: var(--white-color);
+}
+
+.dropdown {
+    background-color: var(--grey-color);
+    color: var(--white-color);
+}
