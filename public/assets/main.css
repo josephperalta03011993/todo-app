@@ -38,3 +38,7 @@
     background-color: var(--grey-color);
     color: var(--white-color);
 }
+
+.mt-1 {
+    margin-top: 1rem !important;
+}

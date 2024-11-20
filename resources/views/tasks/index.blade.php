@@ -11,9 +11,11 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1>Category List</h1>
-
-        <form action="{{ route('categories.store') }}" method="POST">
+        <div>
+            <h1>Category List</h1>
+            <a href="http://localhost:8000/todolist" class="btn btn-info">View Tasks</a>
+        </div>
+        <form action="{{ route('categories.store') }}" method="POST" class="mt-1">
             @csrf
             <div class="input-group mb-3">
                 <input type="text" name="name" class="form-control" placeholder="New Category" required>
@@ -22,7 +24,6 @@
                 <button class="btn btn-success" type="submit"><i class="fa fa-plus-circle"></i> Add Category</button>
             </div>
         </form>
-
         <ul class="list-group-category">
             @foreach($categories as $category)
                 <li class="category-list">

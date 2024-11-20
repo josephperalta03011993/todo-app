@@ -11,8 +11,12 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1>ToDo List</h1>
-
+        <h1>To Do List</h1>
+        <ul>
+            <li class="text-secondary">High (Critical)	- Requires immediate action</li>
+            <li class="text-secondary">Medium (Important) - Can wait a few hours or a day</li>
+            <li class="text-secondary">Low	(Minor) - Can wait until other tasks are resolved</li>
+        </ul>
         <form action="{{ route('tasks.store') }}" method="POST">
             @csrf
             <div class="input-group mb-3">
