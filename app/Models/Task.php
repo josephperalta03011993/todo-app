@@ -9,6 +9,7 @@ class Task extends Model
     protected $fillable = [
         'title',
         'is_completed',
-        'category_id'
+        'category_id',
+        'priority_id'
     ];
 }

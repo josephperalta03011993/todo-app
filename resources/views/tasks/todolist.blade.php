@@ -26,6 +26,11 @@
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
+                <select name="priority" id="priority" class="dropdown">
+                    @foreach($priorities as $prio)
+                        <option value="{{ $prio->id }}">{{ $prio->name }}</option>
+                    @endforeach
+                </select>
                 <button class="btn btn-success" type="submit">Add Task</button>
             </div>
         </form>
@@ -47,6 +52,14 @@
                         @csrf
                         @method('DELETE')
                         <button type="button" class="btn btn-outline-dark btn-sm" disabled>{{ $task->category_name }}</button>
+                        <button type="button" class="btn
+                            @if($task->priority_name == "High")
+                                btn-danger
+                            @elseif($task->priority_name == "Medium")
+                                btn-warning
+                            @else
+                                btn-info
+                            @endif btn-sm" disabled>{{ $task->priority_name }}</button>
                         <button class="btn btn-danger btn-sm">
                             <i class="fa-solid fa-trash"></i>
                         </button>
